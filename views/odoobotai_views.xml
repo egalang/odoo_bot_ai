@@ -1,0 +1,81 @@
+<odoo>
+        <record id="view_odoobotai_config_list" model="ir.ui.view">
+            <field name="name">Odoo Bot AI Config List</field>
+            <field name="model">odoobotai.config</field>
+            <field name="arch" type="xml">
+                <list >
+                    <field name="name" />
+                    <field name="in_used" />
+                    <field name="api_url"/>
+
+                </list>
+            </field>
+        </record>
+
+    <!-- Main configuration form for Odoo Bot AI -->
+
+    <record id="view_odoobotai_config_form" model="ir.ui.view">
+        <field name="name">odoobotai.config.form</field>
+        <field name="model">odoobotai.config</field>
+        <field name="arch" type="xml">
+            <form string="Odoo Bot AI Configuration">
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="api_url" placeholder="Enter the API URL for PDF Upload"/>
+                        <field name="enable_pdf_upload" groups="base.group_system"/>
+                        <field name="in_used" groups="base.group_system"/>
+
+                    </group>
+                    <notebook >
+                        <page string="PDF Uploads">
+                            <field name="pdf_upload_ids" mode="list,form" readonly="not enable_pdf_upload">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="status"/>
+                                    
+                                        <field name="file_data" filename="name" mimetype="mimetype" widget="preview_binary"/>
+                                   
+                                        <field name="extension"/>
+                                        <field name="mimetype"/>
+                                    
+
+                                </list>
+                                <form string="PDF Upload">
+                                    <sheet>
+                                        <group>
+                                            <field name="name"/>
+                                            <field name="status" readonly="1"/>
+                                        </group>
+                                        <footer>
+                                            <button name="upload_pdf_to_api" type="object"
+                                                    string="Upload to API"
+                                                    class="btn btn-primary"/>
+                                            <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                                        </footer>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                    <footer>
+                        <button string="Save" type="object" name="write" class="btn btn-primary"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_pdf_upload" model="ir.actions.act_window">
+        <field name="name">Odoo Bot AI Configuration</field>
+        <field name="res_model">odoobotai.config</field>
+        <field name="view_mode">list,form</field>
+        <field name="target">inline</field>
+    </record>
+
+    <record id="action_pdf_upload_1" model="ir.actions.act_window">
+        <field name="name">PDF Uploads</field>
+        <field name="res_model">pdf.uploads</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

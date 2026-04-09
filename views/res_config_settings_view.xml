@@ -1,0 +1,29 @@
+<odoo>
+    <record id="view_res_config_settings_odoobotai" model="ir.ui.view">
+        <field name="name">res.config.settings.odoobotai.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//setting[@id='activities_setting']" position="after">
+                
+                   <setting string="Odoo Bot AI" help="" title="" id="odoo_bot_ai">
+
+                     <!-- <field name="enable_pdf_upload" /> -->
+                      <div class="content-group" invisible="not enable_pdf_upload">
+                                <div class="mt8">
+                                    <button type="object" name="action_odoobotai_pdf_upload" string="Manage Odoo Bot AI Configuration" icon="oi-arrow-right" class="btn-link"/>
+                                </div>
+                            </div>
+                        <!-- <div class="content-group" >
+                            <div class="mt8">
+                                <button type="object" name="action_odoobotai_pdf_upload" 
+                                    string="Upload PDF"
+                                    class="btn-link"
+                                    groups="base.group_system"/>
+                            </div>
+                        </div> -->
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>

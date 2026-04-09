@@ -1,0 +1,17 @@
+<odoo>
+<record id="action_odoobotai_config" model="ir.actions.act_window">
+        <field name="name">Odoo Bot AI Configuration</field>
+        <field name="res_model">odoobotai.config</field>
+        <field name="view_mode">form,list</field>
+        <field name="target">current</field>
+    </record>
+ <!-- <record id="action_odoobotai_pdf_upload" model="ir.actions.act_window">
+        <field name="name">Upload PDF</field>
+        <field name="res_model">pdf.uploads</field>
+        <field name="view_mode">form,list</field>
+        <field name="target">new</field>
+    </record> -->
+
+   <menuitem id="menu_odoobotai_root" name="Odoo Bot AI" parent="base.menu_config" sequence="10"/>
+    <menuitem id="menu_odoobotai_config" name="Configuration" action="action_odoobotai_config" parent="menu_odoobotai_root" sequence="10"/>
+</odoo>
